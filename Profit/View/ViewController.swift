@@ -11,6 +11,22 @@ class ViewController: UIViewController{
 
     var prof = 0
     
+    func getProfit() {
+        prof = 0
+        if !Operation.shared.operations.isEmpty {
+            prof = Operation.shared.getProfit()
+        }
+        switch prof {
+        case 1... :
+            profit.textColor = UIColor(named: "green");
+        case ..<0 :
+            profit.textColor = UIColor(named: "bagryi");
+        default:
+            profit.textColor = .black
+        }
+        profit.text = String(prof)
+    }
+    
     @IBOutlet weak var operations: UITableView!
     @IBOutlet weak var profit: UILabel!
     @IBOutlet weak var addOperation: UIButton!
@@ -27,19 +43,8 @@ class ViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        prof = 0
-        if !Operation.shared.operations.isEmpty {
-            prof = Operation.shared.getProfit()
-        }
-        switch prof {
-        case 1... :
-            profit.textColor = UIColor(named: "green");
-        case ..<0 :
-            profit.textColor = UIColor(named: "bagryi");
-        default:
-            profit.textColor = .black
-        }
-        profit.text = String(prof)
+        getProfit()
+        
         self.operations.reloadData()
     }
 }
@@ -51,8 +56,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "oper", for: indexPath)
-        cell.textLabel?.text = "\(Operation.shared.operations[indexPath.row].amount) -> \(Operation.shared.operations[indexPath.row].dateString)"
+        let oper = Operation.shared.operations[indexPath.row]
+        cell.textLabel?.text = "\(oper.amount) -> \(oper.dateString)"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { _,_ in
+            Operation.shared.deleteInfo(with: indexPath.row)
+            self.getProfit()
+            tableView.reloadData()
+        }
+        
+        return [deleteAction]
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C85DB3202AE6643E00F1CC5F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C85DB31F2AE6643E00F1CC5F /* Realm */; };
+		C85DB3222AE6643E00F1CC5F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C85DB3212AE6643E00F1CC5F /* RealmSwift */; };
 		C88FDEF72791BBED009A40FD /* AddOperationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88FDEF62791BBED009A40FD /* AddOperationViewController.swift */; };
 		C8B4E25C2790594A0043D396 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B4E25B2790594A0043D396 /* AppDelegate.swift */; };
 		C8B4E2602790594A0043D396 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B4E25F2790594A0043D396 /* ViewController.swift */; };
@@ -37,12 +39,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C85DB3222AE6643E00F1CC5F /* RealmSwift in Frameworks */,
+				C85DB3202AE6643E00F1CC5F /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C85DB3232AE6644B00F1CC5F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C8D5FEE72796E34D000D0DC0 /* Operation.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C85DB3242AE6646500F1CC5F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C8B4E25F2790594A0043D396 /* ViewController.swift */,
+				C88FDEF62791BBED009A40FD /* AddOperationViewController.swift */,
+				C8E190CD279C88B50089D195 /* InfoViewController.swift */,
+				C8B4E26F2790797A0043D396 /* OperationTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C8B4E24F2790594A0043D396 = {
 			isa = PBXGroup;
 			children = (
@@ -62,12 +85,9 @@
 		C8B4E25A2790594A0043D396 /* Profit */ = {
 			isa = PBXGroup;
 			children = (
+				C85DB3232AE6644B00F1CC5F /* Model */,
+				C85DB3242AE6646500F1CC5F /* View */,
 				C8B4E25B2790594A0043D396 /* AppDelegate.swift */,
-				C8D5FEE72796E34D000D0DC0 /* Operation.swift */,
-				C8B4E25F2790594A0043D396 /* ViewController.swift */,
-				C8B4E26F2790797A0043D396 /* OperationTableViewCell.swift */,
-				C88FDEF62791BBED009A40FD /* AddOperationViewController.swift */,
-				C8E190CD279C88B50089D195 /* InfoViewController.swift */,
 				C8B4E2612790594A0043D396 /* Main.storyboard */,
 				C8B4E2642790594D0043D396 /* Assets.xcassets */,
 				C8B4E2662790594D0043D396 /* LaunchScreen.storyboard */,
@@ -92,6 +112,10 @@
 			dependencies = (
 			);
 			name = Profit;
+			packageProductDependencies = (
+				C85DB31F2AE6643E00F1CC5F /* Realm */,
+				C85DB3212AE6643E00F1CC5F /* RealmSwift */,
+			);
 			productName = Profit;
 			productReference = C8B4E2582790594A0043D396 /* Profit.app */;
 			productType = "com.apple.product-type.application";
@@ -102,8 +126,9 @@
 		C8B4E2502790594A0043D396 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					C8B4E2572790594A0043D396 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -119,6 +144,9 @@
 				Base,
 			);
 			mainGroup = C8B4E24F2790594A0043D396;
+			packageReferences = (
+				C85DB31E2AE6643E00F1CC5F /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = C8B4E2592790594A0043D396 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -214,6 +242,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -228,7 +257,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -275,6 +304,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -283,7 +313,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -355,6 +385,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C85DB31E2AE6643E00F1CC5F /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.43.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C85DB31F2AE6643E00F1CC5F /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C85DB31E2AE6643E00F1CC5F /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		C85DB3212AE6643E00F1CC5F /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C85DB31E2AE6643E00F1CC5F /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C8B4E2502790594A0043D396 /* Project object */;
 }

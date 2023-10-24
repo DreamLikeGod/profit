@@ -30,10 +30,9 @@ class AddOperationViewController: UIViewController, UITextFieldDelegate, UITextV
 
     @IBAction func save(_ sender: UIButton) {
         if moneyAmount.hasText && Int(moneyAmount.text!) != 0 {
-            var choice = true
             var amount = Int(moneyAmount.text!) ?? 0
             var descript = "Не добавлено описание"
-            let date = Date()
+            var choice = true
             if choiseOper.selectedSegmentIndex == 1 {
                 choice = false
                 amount = 0 - amount
@@ -41,7 +40,9 @@ class AddOperationViewController: UIViewController, UITextFieldDelegate, UITextV
             if isEdit && !operationDiscript.text.isEmpty {
                 descript = operationDiscript.text
             }
-            Operation.shared.saveOperation(amount: amount, discript: descript, choice: choice, date: date)
+            
+            Operation.shared.createInfo(with: amount, discript: descript, choice: choice)
+            
             dismiss(animated: true, completion: nil)
         }
     }
